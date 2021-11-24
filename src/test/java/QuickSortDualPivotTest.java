@@ -1,11 +1,6 @@
-package test.java;
-
-import static org.junit.Assert.assertFalse;
-
-
-import org.junit.jupiter.api.Test;
-
-import main.sort.DaulPivotQuick;
+import org.junit.Test;
+import sort.DaulPivotQuick;
+import static org.junit.Assert.assertTrue;
 
 public class QuickSortDualPivotTest {
 	@Test
@@ -16,10 +11,11 @@ public class QuickSortDualPivotTest {
 		xs[2]="西";//xi
 		DaulPivotQuick test=new DaulPivotQuick();
 		test.Sort(xs);
-	
-		assertFalse(xs[0].equals("东"));
-		assertFalse(xs[1].equals("好"));
-		assertFalse(xs[2].equals("西"));
+
+		assertTrue("success",xs[0].equals("东"));
+		assertTrue("success",xs[1].equals("好"));
+		assertTrue("success",xs[2].equals("西"));
+
 	}
 
 }

@@ -24,6 +24,11 @@ public class FileUtil {
 		
 	}
 	//FileUtil.readFile("resource/shuffledChinese.txt");
-	
+//	public static void main(String [] args) throws IOException {
+//		List<String> test=FileUtil.readFile("resource/shuffledChinese.txt");
+//		for(String x:test){
+//			System.out.println(x);
+//		}
+//	}
 
 }

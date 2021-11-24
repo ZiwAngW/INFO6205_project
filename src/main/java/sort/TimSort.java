@@ -1,4 +1,4 @@
-package main.sort;
+package sort;
 
 public class TimSort {
 

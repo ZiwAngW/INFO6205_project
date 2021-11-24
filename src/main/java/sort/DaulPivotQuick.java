@@ -1,4 +1,4 @@
-package main.sort;
+package sort;
 import Util.ChineseComparator;
 import Util.Swaper;
 //Creadit https://cs.stackexchange.com/questions/24092/dual-pivot-quicksort-reference-implementation
