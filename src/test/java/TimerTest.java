@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+//credit: INFO6205 class repo for benchmark analysis only
 public class TimerTest {
 
     @Before

@@ -10,7 +10,7 @@ import org.apache.log4j.spi.LoggingEvent;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
-
+//credit: INFO6205 class repo for benchmark analysis only
 @SuppressWarnings("rawtypes")
 public class LazyLogger extends Logger {
 

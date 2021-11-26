@@ -11,7 +11,7 @@ public class FileUtil {
 	public static List<String> readFile(String fileName) throws IOException {
 		List<String> container=new Vector<>();
 		
-		try (BufferedReader read= new BufferedReader(new FileReader(fileName));){
+		try (BufferedReader read= new BufferedReader(new FileReader(fileName))){
 			String inputLine=null;
 			while((inputLine=read.readLine())!=null) {
 				container.add(inputLine);
@@ -22,6 +22,24 @@ public class FileUtil {
 		}
 		return container;
 		
+	}
+
+	public static String[] readFileInRange(String fileName,int range) throws IOException {
+		String[] container=new String[range];
+
+		try (BufferedReader read= new BufferedReader(new FileReader(fileName))){
+			String inputLine=null;
+			for(int i=0;i<range;i++){
+				if((inputLine=read.readLine())!=null){
+					container[i]=inputLine;
+				}
+			}
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+		return container;
+
 	}
 	//FileUtil.readFile("resource/shuffledChinese.txt");
 //	public static void main(String [] args) throws IOException {

@@ -3,7 +3,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
-
+//credit: INFO6205 class repo for benchmark analysis only
 public class Timer {
 
     /**

@@ -10,6 +10,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("ALL")
+
+//credit: INFO6205 class repo for benchmark analysis only
 public class BenchmarkTest {
 
     int pre = 0;

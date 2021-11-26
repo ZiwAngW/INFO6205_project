@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 //import static Utilites.formatWhole;
-
+//credit: INFO6205 class repo for benchmark analysis only
 /**
  * This class implements a simple Benchmark utility for measuring the running time of algorithms.
  * It is part of the repository for the INFO6205 class, taught by Prof. Robin Hillyard

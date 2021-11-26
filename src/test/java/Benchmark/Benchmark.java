@@ -1,6 +1,6 @@
 package Benchmark;
 import java.util.function.Supplier;
-
+//credit: INFO6205 class repo for benchmark analysis only
 /**
  * Interface to define the behavior of a Benchmark.
  *
