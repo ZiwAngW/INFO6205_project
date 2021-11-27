@@ -1,5 +1,7 @@
 package Util;
 
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -35,6 +37,23 @@ public class FileUtil {
 				}
 			}
 		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+		return container;
+
+	}
+	public static WordNode[] readFileInRangeNode(String fileName,int range) throws IOException {
+		WordNode[] container=new WordNode[range];
+
+		try (BufferedReader read= new BufferedReader(new FileReader(fileName))){
+			String inputLine=null;
+			for(int i=0;i<range;i++){
+				if((inputLine=read.readLine())!=null){
+					container[i]=new WordNode(inputLine);
+				}
+			}
+		} catch (FileNotFoundException | BadHanyuPinyinOutputFormatCombination e) {
 
 			e.printStackTrace();
 		}
