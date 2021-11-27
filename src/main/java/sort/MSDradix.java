@@ -3,18 +3,18 @@ package sort;
 import Util.WordNode;
 
 public class MSDradix {
-    private static int charAt(WordNode s, int d)
+    private int charAt(WordNode s, int d)
     {
         if (d < s.getPinyin().length()) return s.getPinyin().charAt(d);
         else return -1;
     }
-    public static void sort(WordNode[] a)
+    public void sort(WordNode[] a)
     {
         WordNode[] aux = new WordNode[a.length];
         sort(a, aux, 0, a.length - 1, 0);
     }
 
-    private static void sort(WordNode[] a, WordNode[] aux, int lo, int hi, int d)
+    private  void sort(WordNode[] a, WordNode[] aux, int lo, int hi, int d)
     {
         int R = 256;
         if (hi <= lo) return;

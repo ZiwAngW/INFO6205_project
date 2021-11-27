@@ -33,5 +33,9 @@ public class WordNode {
     public String getPinyin(){
         return Pinyin;
     }
+    @Override
+    public String toString(){
+        return ChineseChar+","+Pinyin;
+    }
 
 }

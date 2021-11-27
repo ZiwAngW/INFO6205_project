@@ -36,11 +36,14 @@ public class MSD {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] a = FileUtil.readFileInRange("shuffledChinese.txt",10);
+        String[] a = FileUtil.readFileInRange("shuffledChinese.txt",5);
         String[] b = Arrays.stream(a).map(PinyinUtil::getPinyin).toArray(String[]::new);
 //        Collator b = Collator.getInstance(Locale.CHINA);
+        System.out.println(Arrays.toString(a));
         System.out.println(Arrays.toString(b));
         sort(b);
+        System.out.println(Arrays.toString(b));
+        Arrays.sort(b);
         System.out.println(Arrays.toString(b));
     }
 }
