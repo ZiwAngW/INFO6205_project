@@ -7,9 +7,10 @@ import java.text.Collator;
 import java.util.Locale;
 
 public class MSDcollator {
+    static Collator co = Collator.getInstance(Locale.CHINA);
     public int byteAt(String s, int d)
     {
-        byte[] source = ChineseUtil.toByteArray(s);
+        byte[] source = co.getCollationKey(s).toByteArray();
         if (d < source.length) return source[d]&0xFF;
         else return -1;
     }

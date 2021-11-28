@@ -41,6 +41,7 @@ public class LSDtestWithCollator {
         LSDcollator x= new LSDcollator();
         for(int i=0;i<test1.length;i++){
             assertEquals(x.findByteAtInString(i,"哦"),test1[i]&0xFF);
+
         }
     }
 }
