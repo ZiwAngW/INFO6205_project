@@ -1,5 +1,7 @@
 package sort;
 
+import Util.ChineseUtil;
+
 import java.text.Collator;
 
 import java.util.Locale;
@@ -9,7 +11,7 @@ public class LSDcollator {
     public int findLongestLength(String[] a) {
         int longest = 0;
         for (int i = 0; i < a.length; ++i) {
-            byte[] l=co.getCollationKey(a[i]).toByteArray();
+            byte[] l= ChineseUtil.toByteArray(a[i]);
             if (l.length > longest) {
                 longest = l.length;
             }
@@ -18,7 +20,7 @@ public class LSDcollator {
     }
 
     public int findByteAtInString(int d, String a) {
-        byte[] source = co.getCollationKey(a).toByteArray();
+        byte[] source = ChineseUtil.toByteArray(a);
         if (d < 0 || d >= source.length) {
             return 0;
         }
