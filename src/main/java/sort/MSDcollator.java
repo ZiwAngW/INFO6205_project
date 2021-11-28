@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class MSDcollator {
     static Collator co = Collator.getInstance(Locale.CHINA);
-    private static int byteAt(String s, int d)
+    public int byteAt(String s, int d)
     {
         byte[] source = co.getCollationKey(s).toByteArray();
         if (d < source.length) return source[d]&0xFF;

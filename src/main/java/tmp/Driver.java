@@ -2,6 +2,7 @@ package tmp;
 
 import Util.FileUtil;
 import Util.PinyinUtil;
+import sort.TimSort;
 import tmp.husky.PureHuskySort;
 import tmp.husky.huskySortUtils.HuskyCoderFactory;
 
@@ -17,12 +18,12 @@ public class Driver {
         String[] c = Arrays.copyOf(b,n);
         System.out.println("deep copy..");
 
-        System.out.println("tim sort");
-        TimSort t1 = new TimSort();
-        System.out.println(Arrays.toString(a));
-        t1.timSort(a, n);
-        System.out.println("After tim sort");
-        System.out.println(Arrays.toString(a));
+//        System.out.println("tim sort");
+//        TimSort t1 = new TimSort();
+//        System.out.println(Arrays.toString(a));
+//        t1.timSort(a, n);
+//        System.out.println("After tim sort");
+//        System.out.println(Arrays.toString(a));
 
         System.out.println("husky sort");
         final PureHuskySort<String> sorter = new PureHuskySort<>(HuskyCoderFactory.asciiCoder, false, false);
