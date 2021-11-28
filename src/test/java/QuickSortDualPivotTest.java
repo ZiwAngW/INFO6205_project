@@ -17,7 +17,7 @@ public class QuickSortDualPivotTest {
 		xs[1]="东";//Dong
 		xs[2]="西";//xi
 		DualPivotQuick test=new DualPivotQuick();
-		test.Sort(xs);
+		test.sort(xs);
 
 		assertTrue("success",xs[0].equals("东"));
 		assertTrue("success",xs[1].equals("好"));
@@ -29,7 +29,7 @@ public class QuickSortDualPivotTest {
 		String[] xp=FileUtil.readFileInRange("resource/shuffledChinese.txt",5);
 
 		DualPivotQuick test=new DualPivotQuick();
-		test.Sort(xs);
+		test.sort(xs);
 
 		Collator collator = Collator.getInstance(Locale.CHINA);
 		Arrays.sort(xp,(x1, x2)->collator.compare(x1,x2));

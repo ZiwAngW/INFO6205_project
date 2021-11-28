@@ -34,7 +34,7 @@ public class DualPivotQuick {
 	        sort(A, g + 1, right);
 	    }
 	}
-	public void Sort(String [] arr) {
+	public void sort(String [] arr) {
 		sort(arr,0,arr.length-1);
 	}
 	
