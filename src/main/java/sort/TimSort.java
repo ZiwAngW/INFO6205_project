@@ -76,8 +76,9 @@ public class TimSort {
         }
     }
     /* function to implement tim sort */
-    void timSort(String[] a, int n)
+    public void timSort(String[] a)
     {
+        int n = a.length;
         /* Sort individual subarrays of size RUN */
         for (int i = 0; i < n; i+=RUN)
             insertionSort(a, i, min((i+RUN-1), (n-1)));

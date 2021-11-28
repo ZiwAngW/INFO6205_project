@@ -1,6 +1,6 @@
 import Util.FileUtil;
 import org.junit.Test;
-import sort.DaulPivotQuick;
+import sort.DualPivotQuick;
 
 import java.io.IOException;
 import java.text.Collator;
@@ -16,20 +16,19 @@ public class QuickSortDualPivotTest {
 		xs[0]="好";//hao
 		xs[1]="东";//Dong
 		xs[2]="西";//xi
-		DaulPivotQuick test=new DaulPivotQuick();
+		DualPivotQuick test=new DualPivotQuick();
 		test.Sort(xs);
 
 		assertTrue("success",xs[0].equals("东"));
 		assertTrue("success",xs[1].equals("好"));
 		assertTrue("success",xs[2].equals("西"));
-
 	}
 	@Test
 	public void test_fileSort() throws IOException {
 		String[] xs=FileUtil.readFileInRange("resource/shuffledChinese.txt",5);
 		String[] xp=FileUtil.readFileInRange("resource/shuffledChinese.txt",5);
 
-		DaulPivotQuick test=new DaulPivotQuick();
+		DualPivotQuick test=new DualPivotQuick();
 		test.Sort(xs);
 
 		Collator collator = Collator.getInstance(Locale.CHINA);

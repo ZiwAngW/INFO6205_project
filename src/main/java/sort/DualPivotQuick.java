@@ -2,7 +2,7 @@ package sort;
 import Util.ChineseComparator;
 import Util.Swaper;
 //Creadit https://cs.stackexchange.com/questions/24092/dual-pivot-quicksort-reference-implementation
-public class DaulPivotQuick {
+public class DualPivotQuick {
 	void sort(String[] A, int left, int right) {
 		ChineseComparator t=new ChineseComparator();
 	    if (right > left) {

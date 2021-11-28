@@ -20,7 +20,6 @@ public class MSDcollator {
 
     private void sort(String[] a, String[] aux, int lo, int hi, int d)
     {
-
         int R = 1024;
         if (hi <= lo) return;
         int[] count = new int[R+2];
