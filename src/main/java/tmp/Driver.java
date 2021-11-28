@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class Driver {
     public static void main(String[] args) throws IOException {
-        String[] chineseStringList = FileUtil.readFileInRange("shuffledChinese.txt",100);
+        String[] chineseStringList = FileUtil.readFileInRange("shuffledChinese.txt",10000);
 //        List<String> chineseStringTmpList = FileUtil.readFile("shuffledChinese.txt");
 //        String[] chineseStringList = chineseStringTmpList.toArray(new String[0]);
 //        String[] pinyinStringList = Arrays.stream(chineseStringList).map(PinyinUtil::getPinyin).toArray(String[]::new);
