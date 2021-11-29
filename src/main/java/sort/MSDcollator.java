@@ -1,7 +1,5 @@
 package sort;
 
-
-
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 
@@ -21,7 +19,7 @@ public class MSDcollator {
 
     private void sort(String[] a, String[] aux, int lo, int hi, int d)
     {
-        int R = 1024;
+        int R = 256;
         if (hi <= lo) return;
         int[] count = new int[R+2];
         for (int i = lo; i <= hi; i++)
@@ -30,8 +28,7 @@ public class MSDcollator {
             count[r+1] += count[r];
         for (int i = lo; i <= hi; i++)
             aux[count[byteAt(a[i], d) + 1]++] = a[i];
-        for (int i = lo; i <= hi; i++)
-            a[i] = aux[i - lo];
+        if (hi + 1 - lo >= 0) System.arraycopy(aux, 0, a, lo, hi + 1 - lo);
         for (int r = 0; r < R; r++)
             sort(a, aux, lo + count[r], lo + count[r+1] - 1, d+1);
     }

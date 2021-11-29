@@ -50,14 +50,16 @@ public class Benchmark_Timer<T> implements Benchmark<T> {
      * @return the average number of milliseconds taken for each run of function f.
      */
     @Override
-    public double runFromSupplier(Supplier<T> supplier, int m) {
+    public double runFromSupplier(Supplier<T> supplier, int m,boolean warmup) {
         logger.info("Begin run: " + description + " with " + formatWhole(m) + " runs");
         // Warmup phase
         final Function<T, T> function = t -> {
             fRun.accept(t);
             return t;
         };
-        new Timer().repeat(getWarmupRuns(m), supplier, function, fPre, null);
+        if(warmup){
+            new Timer().repeat(getWarmupRuns(m), supplier, function, fPre, null);
+        }
 
         // Timed phase
         return new Timer().repeat(m, supplier, function, fPre, fPost);

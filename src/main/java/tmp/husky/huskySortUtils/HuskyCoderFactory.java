@@ -3,10 +3,13 @@
  */
 package tmp.husky.huskySortUtils;
 
+import Util.ChineseUtil;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.LongBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.ZoneOffset;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.Date;
@@ -73,6 +76,14 @@ public final class HuskyCoderFactory {
          */
         public long huskyEncode(final String str) {
             return asciiToLong(str);
+        }
+
+    };
+
+    public final static HuskySequenceCoder<String> chineseCoder = new BaseHuskySequenceCoder<String>("chinese", MAX_LENGTH_UNICODE) {
+
+        public long huskyEncode(final String str) {
+            return chineseToLong(str);
         }
 
     };
@@ -304,6 +315,11 @@ public final class HuskyCoderFactory {
         return stringToLong(str, MAX_LENGTH_ASCII, BIT_WIDTH_ASCII, MASK_ASCII);
     }
 
+    // CONSIDER making this private
+    public static long chineseToLong(final String str) {
+        return stringToBytesToLong(str, MAX_LENGTH_UTF8, StandardCharsets.UTF_8, 2);
+    }
+
     static long utf8ToLong(final String str) {
         // TODO Need to test that the mask value is correct. I think it might not be.
         return longArrayToLong(toUTF8Array(str), MAX_LENGTH_UTF8, BIT_WIDTH_UTF8, MASK_UTF8) >>> 1;
@@ -332,6 +348,7 @@ public final class HuskyCoderFactory {
     // NOTE: this method seems considerably slower than stringToLong, even though it uses a Java library function (getBytes)
     private static long stringToBytesToLong(final String str, final int maxLength, final Charset charSet, final int startingPos) {
         final byte[] bytes = str.substring(0, Math.min(maxLength, str.length())).getBytes(charSet);
+        final byte[] bytes1 = ChineseUtil.toByteArray(str.substring(0, Math.min(maxLength, str.length())));
         int bytesIndex = startingPos;
         int resultIndex = 0;
         long result = 0L;

@@ -12,10 +12,11 @@ public interface Benchmark<T> {
      *
      * @param t the value that will in turn be passed to function f.
      * @param m the number of times the function f will be called.
+     * @param warmup
      * @return the average number of milliseconds taken for each run of function f.
      */
-    default double run(T t, int m) {
-        return runFromSupplier(() -> t, m);
+    default double run(T t, int m, boolean warmup) {
+        return runFromSupplier(() -> t, m, warmup);
     }
 
     /**
@@ -25,7 +26,7 @@ public interface Benchmark<T> {
      * @param m        the number of times the function f will be called.
      * @return the average number of milliseconds taken for each run of function f.
      */
-    double runFromSupplier(Supplier<T> supplier, int m);
+    double runFromSupplier(Supplier<T> supplier, int m,boolean warmup);
 
 }
 
