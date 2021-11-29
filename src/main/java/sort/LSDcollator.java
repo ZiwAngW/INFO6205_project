@@ -2,12 +2,11 @@ package sort;
 
 
 
-import java.text.Collator;
-
-import java.util.Locale;
+import com.ibm.icu.text.Collator;
+import com.ibm.icu.util.ULocale;
 
 public class LSDcollator {
-    static Collator co = Collator.getInstance(Locale.CHINA);
+    static Collator co = Collator.getInstance(ULocale.CHINA);
     public int findLongestLength(String[] a) {
         int longest = 0;
         for (int i = 0; i < a.length; ++i) {

@@ -5,9 +5,11 @@ import sort.MSDcollator;
 
 
 import java.io.IOException;
-import java.text.Collator;
+
 import java.util.Arrays;
-import java.util.Locale;
+import com.ibm.icu.text.Collator;
+import com.ibm.icu.util.ULocale;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,7 +28,7 @@ public class MSDtestWithCollator {
     public void GeneralTest2() throws IOException {
         String[] a = FileUtil.readFileInRange("shuffledChinese.txt",10);
         String[] test =  FileUtil.readFileInRange("shuffledChinese.txt",10);
-        Collator collator = Collator.getInstance(Locale.CHINA);
+        Collator collator = Collator.getInstance(ULocale.CHINA);
         Arrays.sort(a,(x1, x2)->collator.compare(x1,x2));
         MSDcollator x= new MSDcollator();
         x.sort(test);
@@ -37,7 +39,7 @@ public class MSDtestWithCollator {
     }
     @Test
     public void ByteAtTest(){
-        Collator collator = Collator.getInstance(Locale.CHINA);
+        Collator collator = Collator.getInstance(ULocale.CHINA);
         byte[] test1=collator.getCollationKey("啊").toByteArray();
         MSDcollator x= new MSDcollator();
         for(int i=0;i<test1.length;i++){
