@@ -76,7 +76,7 @@ public class Driver {
             double resultMean = 0.0;
             for(int round = 0;round<iteration;round++){
                 chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-                Benchmark<Object> benchmark3 = new Benchmark_Timer<>(sortType, a -> new tmp.DualPivotQuick().sort(chineseStringListForSort));
+                Benchmark<Object> benchmark3 = new Benchmark_Timer<>(sortType, a -> new DualPivotQuick().sort(chineseStringListForSort));
                 resultMean += benchmark3.run(1, 1, false);
             }
             mean = resultMean/iteration;
@@ -169,7 +169,7 @@ public class Driver {
     }
 
     private static void correctNessQuick(String[] arr) {
-        tmp.DualPivotQuick dualPivotQuick = new tmp.DualPivotQuick();
+        DualPivotQuick dualPivotQuick = new DualPivotQuick();
         System.out.println("Dual-pivot Quicksort");
         dualPivotQuick.sort(arr);
         System.out.println("after Dual-pivot Quicksort");
