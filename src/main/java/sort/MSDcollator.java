@@ -1,10 +1,16 @@
 package sort;
 
-import com.ibm.icu.text.Collator;
+import Util.FileUtil;
+//import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 
+import java.io.IOException;
+import java.text.Collator;
+import java.util.Locale;
+
 public class MSDcollator {
-    static Collator co = Collator.getInstance(ULocale.CHINA);
+//    static Collator co = Collator.getInstance(ULocale.CHINA);
+    static Collator co = Collator.getInstance(Locale.CHINA);
     public int byteAt(String s, int d)
     {
         byte[] source = co.getCollationKey(s).toByteArray();
@@ -32,16 +38,17 @@ public class MSDcollator {
         for (int r = 0; r < R; r++)
             sort(a, aux, lo + count[r], lo + count[r+1] - 1, d+1);
     }
-//    public static void main(String args[]) throws IOException {
-//        MSDcollator test=new MSDcollator();
+    public static void main(String args[]) throws IOException {
+        MSDcollator test=new MSDcollator();
 //        String[] x= FileUtil.readFileInRange("shuffledChinese.txt",5);
-//        for(String a:x){
-//            System.out.println(a);
-//        }
-//        System.out.println();
-//        test.sort(x);
-//        for(String a:x){
-//            System.out.println(a);
-//        }
-//    }
+        String[] x= {"阿鼎","阿迪雅"};
+        for(String a:x){
+            System.out.println(a);
+        }
+        System.out.println();
+        test.sort(x);
+        for(String a:x){
+            System.out.println(a);
+        }
+    }
 }
