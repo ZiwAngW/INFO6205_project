@@ -1,10 +1,7 @@
 package sort;
 
 import Util.Node;
-import Util.WordNode;
 
-import java.text.Collator;
-import java.util.Locale;
 
 public class LSDByteArray {
     public int findLongestLength(Node[] a) {

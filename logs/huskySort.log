@@ -70,4 +70,8 @@
 å2021-11-29 01:48:08 INFO  Benchmark_Timer - Begin run: quick with 1 runs
 å2021-11-29 01:48:24 INFO  Benchmark_Timer - Begin run: husky with 5 runs
 å2021-11-29 01:49:14 INFO  Benchmark_Timer - Begin run: lsd with 5 runs
+å2021-11-30 03:27:24 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
+å2021-11-30 03:30:55 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
+å2021-11-30 03:39:57 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
+å2021-11-30 04:34:50 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
 å

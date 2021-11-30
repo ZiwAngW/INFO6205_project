@@ -1,7 +1,6 @@
+import Util.ChineseComparator;
 import Util.FileUtil;
-import Util.WordNode;
 
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.junit.Test;
 import sort.MSDradix;
 
@@ -15,13 +14,14 @@ import static org.junit.Assert.assertEquals;
 public class MSDtestWithNode {
 
     @Test
-    public void GeneralTest1() throws BadHanyuPinyinOutputFormatCombination {
+    public void GeneralTest1() {
 //        WordNode [] a ={new WordNode("这"),new WordNode("一"),new WordNode("晚")};
         String [] a ={"晚","一","这"};
         String [] b ={"晚","一","这"};
         MSDradix x= new MSDradix();
         x.sort(a);
-        Arrays.sort(b);
+        ChineseComparator test= new ChineseComparator();
+        Arrays.sort(b,(x1,x2)->test.compare(x1,x2));
         for(int i =0;i<3;i++){
             assertEquals(a[i],b[i]);
         }

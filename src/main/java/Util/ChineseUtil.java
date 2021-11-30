@@ -14,8 +14,8 @@ public class ChineseUtil {
         return collator.getCollationKey(string);
     }
 
-    public static void main(String[] args) {
-        CollationKey a = getCollatorKey("刘持平");
-        System.out.println(a);
-    }
+//    public static void main(String[] args) {
+//        CollationKey a = getCollatorKey("刘持平");
+//        System.out.println(a);
+//    }
 }
