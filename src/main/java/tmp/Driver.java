@@ -2,10 +2,7 @@ package tmp;
 
 import Benchmark.Benchmark;
 import Benchmark.Benchmark_Timer;
-import Util.ChineseUtil;
-import Util.FileUtil;
-import Util.PinyinUtil;
-import Util.WordNode;
+import Util.*;
 import sort.*;
 import tmp.husky.PureHuskySort;
 import tmp.husky.huskySortUtils.HuskyCoderFactory;
@@ -18,7 +15,6 @@ import java.util.Map;
 public class Driver {
 
     public static String[] chineseStringListForSort;
-    public static WordNode[] chineseStringNodeListForSort;
 
     public static void main(String[] args) throws IOException {
         benchmark();
@@ -36,58 +32,78 @@ public class Driver {
         for (int arraySize : size) {
             String[] chineseStringList;
             WordNode[] chineseStringNodeList;
+            Node[] chineseStringByteNodeList;
             if (arraySize < (2 * oneMillion)) {
                 chineseStringList = FileUtil.readFileInRange("shuffledChinese.txt", arraySize);
                 chineseStringNodeList = FileUtil.readFileInRangeNode("shuffledChinese.txt", arraySize);
+                chineseStringByteNodeList = FileUtil.readFileInRangeByteNode("shuffledChinese.txt", arraySize);
             } else {
                 chineseStringList = new String[arraySize];
                 chineseStringNodeList = new WordNode[arraySize];
+                chineseStringByteNodeList = new Node[arraySize];
                 for (int j = 0; j < arraySize / oneMillion; j++) {
                     System.arraycopy(FileUtil.readFileInRange("shuffledChinese.txt", oneMillion), 0, chineseStringList, j * oneMillion, oneMillion);
                     System.arraycopy(FileUtil.readFileInRangeNode("shuffledChinese.txt", oneMillion), 0, chineseStringNodeList, j * oneMillion, oneMillion);
+                    System.arraycopy(FileUtil.readFileInRangeByteNode("shuffledChinese.txt", oneMillion), 0, chineseStringByteNodeList, j * oneMillion, oneMillion);
                 }
             }
             int n = chineseStringList.length;
             /*
             msd sort benchmark
              */
-            sortType = "msd";
-            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-            Benchmark<Object> benchmark1 = new Benchmark_Timer<>(sortType, a -> new MSDcollator().sort(chineseStringListForSort));
-            mean = benchmark1.run(1, iteration, true);
-            getResultString(sortType, iteration, arraySize, mean);
+//            sortType = "msd";
+//            Benchmark<Object> benchmark1 = new Benchmark_Timer<>(sortType, a -> {
+//                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+//                return null;
+//            }
+//                    , a -> new MSDcollator().sort(chineseStringListForSort));
+//            mean = benchmark1.run(1, iteration, true);
+//            getResultString(sortType, iteration, arraySize, mean);
             sortType = "msd wordnode";
-            chineseStringNodeListForSort = Arrays.copyOf(chineseStringNodeList, n);
-            Benchmark<Object> benchmark10 = new Benchmark_Timer<>(sortType, a -> new MSDradix().sort(chineseStringNodeListForSort));
+            Benchmark<Object> benchmark10 = new Benchmark_Timer<>(sortType, a -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+                return null;
+            }
+                    , a -> new MSDradix().sort(chineseStringListForSort));
             mean = benchmark10.run(1, iteration, true);
+            getResultString(sortType, iteration, arraySize, mean);
+            sortType = "msd bytenode";
+            Benchmark<Object> benchmark100 = new Benchmark_Timer<>(sortType, a -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+                return null;
+            }
+                    , a -> new tmp.MSD2().sort(chineseStringListForSort));
+            mean = benchmark100.run(1, iteration, true);
             getResultString(sortType, iteration, arraySize, mean);
             /*
             tim sort benchmark
              */
             sortType = "tim";
-            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-            Benchmark<Object> benchmark2 = new Benchmark_Timer<>(sortType, a -> new TimSort().sort(chineseStringListForSort));
+            Benchmark<Object> benchmark2 = new Benchmark_Timer<>(sortType, a -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+                return null;
+            }
+                    , a -> new TimSort().sort(chineseStringListForSort));
             mean = benchmark2.run(1, iteration, true);
             getResultString(sortType, iteration, arraySize, mean);
             /*
             quick sort benchmark
              */
             sortType = "quick";
-            double resultMean = 0.0;
-            for(int round = 0;round<iteration;round++){
+            Benchmark<Object> benchmark3 = new Benchmark_Timer<>(sortType, a -> {
                 chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-                Benchmark<Object> benchmark3 = new Benchmark_Timer<>(sortType, a -> new DualPivotQuick().sort(chineseStringListForSort));
-                resultMean += benchmark3.run(1, 1, false);
+                return null;
             }
-            mean = resultMean/iteration;
+                    , a -> new DualPivotQuick().sort(chineseStringListForSort));
+            mean = benchmark3.run(1, iteration, true);
             getResultString(sortType, iteration, arraySize, mean);
             /*
             husky sort benchmark
              */
             sortType = "husky";
-            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
             Map<String, String> pinyinMap = new HashMap<>();
             Benchmark<Object> benchmark4 = new Benchmark_Timer<>(sortType, b -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
                 for (int k = 0; k < chineseStringListForSort.length; k++) {
                     pinyinMap.put(PinyinUtil.getPinyin(chineseStringListForSort[k]), chineseStringListForSort[k]);
                     chineseStringListForSort[k] = PinyinUtil.getPinyin(chineseStringListForSort[k]);
@@ -103,26 +119,39 @@ public class Driver {
             /*
             lsd sort benchmark
              */
-            sortType = "lsd";
-            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-            Benchmark<Object> benchmark5 = new Benchmark_Timer<>(sortType, a -> new LSDcollator().sort(chineseStringListForSort));
-            mean = benchmark5.run(1, iteration, true);
-            getResultString(sortType, iteration, arraySize, mean);
+//            sortType = "lsd";
+//            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+//            Benchmark<Object> benchmark5 = new Benchmark_Timer<>(sortType,a -> {
+//                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+//                return null;
+//            }, a -> new LSDcollator().sort(chineseStringListForSort));
+//            mean = benchmark5.run(1, iteration, true);
+//            getResultString(sortType, iteration, arraySize, mean);
             sortType = "lsd wordnode";
-            chineseStringNodeListForSort = Arrays.copyOf(chineseStringNodeList, n);
-            Benchmark<Object> benchmark50 = new Benchmark_Timer<>(sortType, a -> new LSDradix().sort(chineseStringNodeListForSort));
+            chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+            Benchmark<Object> benchmark50 = new Benchmark_Timer<>(sortType,a -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+                return null;
+            }, a -> new LSDradix().sort(chineseStringListForSort));
             mean = benchmark50.run(1, iteration, true);
+            getResultString(sortType, iteration, arraySize, mean);
+            sortType = "lsd bytenode";
+            Benchmark<Object> benchmark500 = new Benchmark_Timer<>(sortType,a -> {
+                chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+                return null;
+            }, a -> new LSDByteArray().sort(chineseStringListForSort));
+            mean = benchmark500.run(1, iteration, true);
             getResultString(sortType, iteration, arraySize, mean);
         }
     }
 
     public static void correctness() throws IOException {
-//        String[] chineseStringList = FileUtil.readFileInRange("shuffledChinese.txt", 250000);
-        int oneMillion = 1000000;
-        String[] chineseStringList = new String[4 * oneMillion];
-        for (int i = 0; i < 4; i++) {
-            System.arraycopy(FileUtil.readFileInRange("shuffledChinese.txt", oneMillion), 0, chineseStringList, i * oneMillion, oneMillion);
-        }
+        String[] chineseStringList = FileUtil.readFileInRange("shuffledChinese.txt", 250000);
+//        int oneMillion = 1000000;
+//        String[] chineseStringList = new String[4 * oneMillion];
+//        for (int i = 0; i < 4; i++) {
+//            System.arraycopy(FileUtil.readFileInRange("shuffledChinese.txt", oneMillion), 0, chineseStringList, i * oneMillion, oneMillion);
+//        }
 //        String[] chineseStringList = {"刘持平", "洪文胜", "樊辉辉", "苏会敏", "高民政", "曹玉德", "袁继鹏", "舒冬梅", "杨腊香", "许凤山"};
         //        String[] chineseStringList = {"刘思文", "刘思源","刘斯文","刘四文"};
 //        List<String> chineseStringTmpList = FileUtil.readFile("shuffledChinese.txt");
@@ -133,11 +162,11 @@ public class Driver {
         printFirstHundredElement(chineseStringList);
         int n = chineseStringList.length;
 
-//        String[] chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
-//        correctNessMDS(chineseStringListForSort);
+        String[] chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
+        correctNessMDS(chineseStringListForSort);
 //
-//        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
-//        correctNessTim(chineseStringListForSort);
+        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
+        correctNessTim(chineseStringListForSort);
 //
 //        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
 //        correctNessQuick(chineseStringListForSort);
@@ -145,16 +174,29 @@ public class Driver {
 //        chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
 //        correctNessHusky(chineseStringListForSort);
 
-//        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
-//        correctNessLDS(chineseStringListForSort);
+        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
+        correctNessLDS(chineseStringListForSort);
+        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
+        correctNessMDSByte(chineseStringListForSort);
+        chineseStringListForSort= Arrays.copyOf(chineseStringList, n);
+        correctNessLDSByte(chineseStringListForSort);
 
     }
 
     private static void correctNessMDS(String[] arr) {
-        MSDcollator msDcollator = new MSDcollator();
+        MSDradix msDradix = new MSDradix();
         System.out.println("MSD sort");
-        msDcollator.sort(arr);
+        msDradix.sort(arr);
         System.out.println("After MSD sort");
+//        System.out.println(Arrays.asList(chineseStringList1));
+        printFirstHundredElement(arr);
+    }
+
+    private static void correctNessMDSByte(String[] arr) {
+        MSD2 msd2 = new MSD2();
+        System.out.println("MSD byte sort");
+        msd2.sort(arr);
+        System.out.println("After MSD byte sort");
 //        System.out.println(Arrays.asList(chineseStringList1));
         printFirstHundredElement(arr);
     }
@@ -197,10 +239,19 @@ public class Driver {
     }
 
     private static void correctNessLDS(String[] arr) {
-        LSDcollator lsDcollator = new LSDcollator();
+        LSDradix lsDradix = new LSDradix();
         System.out.println("LSD sort");
-        lsDcollator.sort(arr);
+        lsDradix.sort(arr);
         System.out.println("After LSD sort");
+//        System.out.println(Arrays.asList(chineseStringList5));
+        printFirstHundredElement(arr);
+    }
+
+    private static void correctNessLDSByte(String[] arr) {
+        LSDByteArray lsdByteArray = new LSDByteArray();
+        System.out.println("LSD byte sort");
+        lsdByteArray.sort(arr);
+        System.out.println("After LSD byte sort");
 //        System.out.println(Arrays.asList(chineseStringList5));
         printFirstHundredElement(arr);
     }

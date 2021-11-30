@@ -2,11 +2,17 @@ package sort;
 
 
 
+import Util.ChineseUtil;
+import Util.FileUtil;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 
+import java.io.IOException;
+import java.util.Arrays;
+
 public class LSDcollator {
     static Collator co = Collator.getInstance(ULocale.CHINA);
+//    static Collator co = Collator.getInstance(Locale.CHINA);
     public int findLongestLength(String[] a) {
         int longest = 0;
         for (String s : a) {
@@ -47,12 +53,22 @@ public class LSDcollator {
         }
     }
 
-//    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 //        String[] a = FileUtil.readFileInRange("shuffledChinese.txt",5);
-//
-////        Collator b = Collator.getInstance(Locale.CHINA);
+//        LSDcollator lsDcollator = new LSDcollator();
 //        System.out.println(Arrays.toString(a));
-//        sort(a);
+//        lsDcollator.sort(a);
 //        System.out.println(Arrays.toString(a));
-//    }
+        String a = "阿清";
+        String aa = "阿请";
+//        System.out.println(Arrays.toString(co.getCollationKey(a).toByteArray()));
+        System.out.println(Arrays.toString(ChineseUtil.toByteArray(a)));
+//        System.out.println(Arrays.toString(co.getCollationKey(aa).toByteArray()));
+        System.out.println(Arrays.toString(ChineseUtil.toByteArray(aa)));
+        byte[] arr = {117, 127, 87, -73, 126, -95, 1, 7, 1, 7, 0};
+        for(byte b:arr){
+            System.out.print(b & 0xFF);
+            System.out.print(" ");
+        }
+    }
 }

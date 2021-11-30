@@ -1,8 +1,12 @@
 package sort;
 
+import Util.FileUtil;
+import Util.PinyinUtil;
 import Util.WordNode;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-
+import java.io.IOException;
+import java.util.Arrays;
 
 public class LSDradix {
     public int findLongestLength(WordNode[] a) {
@@ -20,6 +24,21 @@ public class LSDradix {
             return 0;
         }
         return a.getPinyin().charAt(d);
+    }
+
+    public void sort(String[] a) {
+        WordNode[] wordNodeArray = new WordNode[a.length];
+        try {
+            for (int i = 0; i < a.length; i++) {
+                wordNodeArray[i] = new WordNode(a[i]);
+            }
+        } catch (BadHanyuPinyinOutputFormatCombination e) {
+            e.printStackTrace();
+        }
+        sort(wordNodeArray);
+        for (int i = 0; i < a.length; i++) {
+            a[i] = wordNodeArray[i].getChineseChar();
+        }
     }
 
     public void sort(WordNode[] a) {
@@ -42,6 +61,17 @@ public class LSDradix {
             for (int i = 0; i < N; i++)
                 a[i] = aux[i];
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        LSDradix a = new LSDradix();
+        WordNode[] c = FileUtil.readFileInRangeNode("shuffledChinese.txt",10);
+//        String[] b = Arrays.stream(a).map(PinyinUtil::getPinyin).toArray(String[]::new);
+//        Collator b = Collator.getInstance(Locale.CHINA);
+        Arrays.asList(c).forEach(System.out::print);
+        System.out.println();
+        a.sort(c);
+        Arrays.asList(c).forEach(System.out::print);
     }
 
 }

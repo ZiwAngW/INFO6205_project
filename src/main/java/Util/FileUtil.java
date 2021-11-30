@@ -60,6 +60,21 @@ public class FileUtil {
 		return container;
 
 	}
+
+	public static Node[] readFileInRangeByteNode(String fileName,int range) throws IOException {
+		Node[] container=new Node[range];
+
+		BufferedReader read= new BufferedReader(new FileReader(fileName));
+		String inputLine=null;
+		for(int i=0;i<range;i++){
+			if((inputLine=read.readLine())!=null){
+				container[i]=new Node(inputLine);
+			}
+		}
+		return container;
+
+	}
+
 	//FileUtil.readFile("resource/shuffledChinese.txt");
 //	public static void main(String [] args) throws IOException {
 //		List<String> test=FileUtil.readFile("resource/shuffledChinese.txt");
