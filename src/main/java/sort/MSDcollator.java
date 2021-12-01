@@ -1,16 +1,12 @@
 package sort;
 
-import Util.FileUtil;
+
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 
-import java.io.IOException;
-//import java.text.Collator;
-//import java.util.Locale;
-
 public class MSDcollator {
    static Collator co = Collator.getInstance(ULocale.CHINA);
-//    static Collator co = Collator.getInstance(Locale.CHINA);
+
     public int byteAt(String s, int d)
     {
         byte[] source = co.getCollationKey(s).toByteArray();

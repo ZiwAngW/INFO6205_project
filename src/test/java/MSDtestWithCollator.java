@@ -26,8 +26,8 @@ public class MSDtestWithCollator {
     }
     @Test
     public void GeneralTest2() throws IOException {
-        String[] a = FileUtil.readFileInRange("shuffledChinese.txt",10);
-        String[] test =  FileUtil.readFileInRange("shuffledChinese.txt",10);
+        String[] a = FileUtil.readFileInRange("shuffledChinese.txt",1000000);
+        String[] test =  FileUtil.readFileInRange("shuffledChinese.txt",1000000);
         Collator collator = Collator.getInstance(ULocale.CHINA);
         Arrays.sort(a,(x1, x2)->collator.compare(x1,x2));
         MSDcollator x= new MSDcollator();

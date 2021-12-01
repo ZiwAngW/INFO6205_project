@@ -26,7 +26,7 @@ public class MSDradix {
     }
 
     private void sort(WordNode[] a, WordNode[] aux, int lo, int hi, int d) {
-        int R = 256;
+        int R = 512;
         if (hi <= lo) return;
         int[] count = new int[R + 2];
         for (int i = lo; i <= hi; i++)
