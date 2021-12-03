@@ -109,4 +109,5 @@
 å2021-11-30 21:22:33 INFO  Benchmark_Timer - Begin run: husky and 4000000 elements with 10 runs
 å2021-11-30 21:29:05 INFO  Benchmark_Timer - Begin run: lsd word node and 4000000 elements with 10 runs
 å2021-11-30 21:33:04 INFO  Benchmark_Timer - Begin run: lsd byte node and 4000000 elements with 10 runs
+å2021-12-03 00:26:05 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
 å

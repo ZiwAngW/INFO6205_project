@@ -1,9 +1,9 @@
 package tmp;
 
-import Util.Node;
+import Util.ByteNode;
 
 public class MSD2 {
-    public int byteAt(Node s, int d)
+    public int byteAt(ByteNode s, int d)
     {
 //        byte[] source = s.getByteArray();
 //        if (d < source.length) return source[d]&0xFF;
@@ -13,18 +13,18 @@ public class MSD2 {
     }
     public void sort(String[] a)
     {
-        Node[] nodeArray = new Node[a.length];
+        ByteNode[] nodeArray = new ByteNode[a.length];
         for(int i = 0;i<a.length;i++){
-            nodeArray[i] = new Node(a[i]);
+            nodeArray[i] = new ByteNode(a[i]);
         }
-        Node[] aux = new Node[a.length];
+        ByteNode[] aux = new ByteNode[a.length];
         sort(nodeArray, aux, 0, a.length - 1, 0);
         for(int i = 0;i<a.length;i++){
             a[i] = nodeArray[i].getChineseChar();
         }
     }
 
-    private void sort(Node[] a, Node[] aux, int lo, int hi, int d)
+    private void sort(ByteNode[] a, ByteNode[] aux, int lo, int hi, int d)
     {
         int R = 256;
         if (hi <= lo) return;

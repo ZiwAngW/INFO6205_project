@@ -197,7 +197,13 @@ public class Driver {
             Benchmark<Object> benchmark2 = new Benchmark_Timer<>(sortType, a -> {
                 chineseStringListForSort = Arrays.copyOf(chineseStringList, n);
                 return null;
-            }, a -> new MSDhusky().sort(chineseStringListForSort));
+            }, a -> {
+                try {
+                    new MSDhusky().sort(chineseStringListForSort);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
             mean = benchmark2.run(1, iteration, true);
             System.out.println(mean);
             sortType = "msd byte and " + arraySize + " elements";
