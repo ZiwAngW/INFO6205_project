@@ -35,14 +35,14 @@ public class LSDtestWithCollator {
             assertEquals(test[i],a[i]);
         }
     }
-    @Test
-    public void findByteAtTest(){
-        Collator collator = Collator.getInstance(ULocale.CHINA);
-        byte[] test1=collator.getCollationKey("哦").toByteArray();
-        LSDcollator x= new LSDcollator();
-        for(int i=0;i<test1.length;i++){
-            assertEquals(x.findByteAtInString(i,"哦"),test1[i]&0xFF);
-
-        }
-    }
+//    @Test
+//    public void findByteAtTest(){
+//        Collator collator = Collator.getInstance(ULocale.CHINA);
+//        byte[] test1=collator.getCollationKey("哦").toByteArray();
+//        LSDcollator x= new LSDcollator();
+//        for(int i=0;i<test1.length;i++){
+//            assertEquals(x.findByteAtInString(i,"哦"),test1[i]&0xFF);
+//
+//        }
+//    }
 }

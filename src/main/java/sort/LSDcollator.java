@@ -4,6 +4,7 @@ package sort;
 
 import Util.ChineseUtil;
 import Util.FileUtil;
+import com.ibm.icu.text.CollationKey;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 
@@ -13,10 +14,10 @@ import java.util.Arrays;
 public class LSDcollator {
     static Collator co = Collator.getInstance(ULocale.CHINA);
 //    static Collator co = Collator.getInstance(Locale.CHINA);
-    public int findLongestLength(String[] a) {
+    public int findLongestLength(CollationKey[] a) {
         int longest = 0;
-        for (String s : a) {
-            byte[] l = co.getCollationKey(s).toByteArray();
+        for (CollationKey s : a) {
+            byte[] l = s.toByteArray();
             if (l.length > longest) {
                 longest = l.length;
             }
@@ -24,8 +25,8 @@ public class LSDcollator {
         return longest;
     }
 
-    public int findByteAtInString(int d, String a) {
-        byte[] source = co.getCollationKey(a).toByteArray();
+    public int findByteAtInString(int d, CollationKey a) {
+        byte[] source = a.toByteArray();
         if (d < 0 || d >= source.length) {
             return 0;
         }
@@ -33,23 +34,34 @@ public class LSDcollator {
     }
 
     public void sort(String[] a) {
+
+        CollationKey[] collationKeys = new CollationKey[a.length];
+        for(int i = 0;i<a.length;i++){
+            collationKeys[i] = co.getCollationKey(a[i]);
+        }
+
+
+
         int R = 256;
-        int N = a.length;
-        int W = findLongestLength(a);
-        String[] aux = new String[N];
+        int N = collationKeys.length;
+        int W = findLongestLength(collationKeys);
+        CollationKey[] aux = new CollationKey[N];
         for (int d = W - 1; d >= 0; d--) {
             int[] count = new int[R + 1];
-            for (String s : a) {
+            for (CollationKey s : collationKeys) {
                 int c = findByteAtInString(d, s);
                 count[c + 1]++;
             }
             for (int r = 0; r < R; r++)
                 count[r + 1] += count[r];
-            for (String s : a) {
+            for (CollationKey s : collationKeys) {
                 int c = findByteAtInString(d, s);
                 aux[count[c]++] = s;
             }
-            System.arraycopy(aux, 0, a, 0, N);
+            System.arraycopy(aux, 0, collationKeys, 0, N);
+        }
+        for(int i = 0;i<a.length;i++){
+            a[i] = collationKeys[i].getSourceString();
         }
     }
 

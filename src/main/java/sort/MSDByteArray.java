@@ -1,27 +1,27 @@
 package sort;
 
-import Util.Node;
+import Util.ByteNode;
 
 public class MSDByteArray {
-    public int byteAt(Node s, int d)
+    public int byteAt(ByteNode s, int d)
     {
         if (d < s.getByteArray().length) return s.getByteArray()[d]&0xFF;
         else return -1;
     }
     public void sort(String[] a)
     {
-        Node[] nodeArray = new Node[a.length];
+        ByteNode[] byteNodeArray = new ByteNode[a.length];
         for(int i = 0;i<a.length;i++){
-            nodeArray[i] = new Node(a[i]);
+            byteNodeArray[i] = new ByteNode(a[i]);
         }
-        Node[] aux = new Node[a.length];
-        sort(nodeArray, aux, 0, a.length - 1, 0);
+        ByteNode[] aux = new ByteNode[a.length];
+        sort(byteNodeArray, aux, 0, a.length - 1, 0);
         for(int i = 0;i<a.length;i++){
-            a[i] = nodeArray[i].getChineseChar();
+            a[i] = byteNodeArray[i].getChineseChar();
         }
     }
 
-    private void sort(Node[] a, Node[] aux, int lo, int hi, int d)
+    private void sort(ByteNode[] a, ByteNode[] aux, int lo, int hi, int d)
     {
         int R = 256;
         if (hi <= lo) return;

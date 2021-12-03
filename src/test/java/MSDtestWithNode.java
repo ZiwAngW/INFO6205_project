@@ -2,7 +2,7 @@ import Util.ChineseComparator;
 import Util.FileUtil;
 
 import org.junit.Test;
-import sort.MSDradix;
+import sort.MSDWordNode;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class MSDtestWithNode {
 //        WordNode [] a ={new WordNode("这"),new WordNode("一"),new WordNode("晚")};
         String [] a ={"晚","一","这"};
         String [] b ={"晚","一","这"};
-        MSDradix x= new MSDradix();
+        MSDWordNode x= new MSDWordNode();
         x.sort(a);
         ChineseComparator test= new ChineseComparator();
         Arrays.sort(b,(x1,x2)->test.compare(x1,x2));
@@ -35,7 +35,7 @@ public class MSDtestWithNode {
         String[] b = FileUtil.readFileInRange("shuffledChinese.txt",10);
         Collator collator = Collator.getInstance(ULocale.CHINA);
         Arrays.sort(a,(x1, x2)->collator.compare(x1,x2));
-        MSDradix x= new MSDradix();
+        MSDWordNode x= new MSDWordNode();
         x.sort(b);
 
         for(int i =0;i<10;i++){

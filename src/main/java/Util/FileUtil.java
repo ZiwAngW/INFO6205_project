@@ -61,14 +61,14 @@ public class FileUtil {
 
 	}
 
-	public static Node[] readFileInRangeByteNode(String fileName,int range) throws IOException {
-		Node[] container=new Node[range];
+	public static ByteNode[] readFileInRangeByteNode(String fileName, int range) throws IOException {
+		ByteNode[] container=new ByteNode[range];
 
 		BufferedReader read= new BufferedReader(new FileReader(fileName));
 		String inputLine=null;
 		for(int i=0;i<range;i++){
 			if((inputLine=read.readLine())!=null){
-				container[i]=new Node(inputLine);
+				container[i]=new ByteNode(inputLine);
 			}
 		}
 		return container;

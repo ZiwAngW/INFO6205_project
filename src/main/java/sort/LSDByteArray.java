@@ -1,12 +1,12 @@
 package sort;
 
-import Util.Node;
+import Util.ByteNode;
 
 
 public class LSDByteArray {
-    public int findLongestLength(Node[] a) {
+    public int findLongestLength(ByteNode[] a) {
         int longest = 0;
-        for (Node x : a) {
+        for (ByteNode x : a) {
             if (x.getByteArray().length > longest) {
                 longest = x.getByteArray().length;
             }
@@ -14,7 +14,7 @@ public class LSDByteArray {
         return longest;
     }
 
-    public int findCharAtInString(int d, Node a) {
+    public int findCharAtInString(int d, ByteNode a) {
         if (d < 0 || d >= a.getByteArray().length) {
             return 0;
         }
@@ -22,21 +22,21 @@ public class LSDByteArray {
     }
 
     public void sort(String[] a) {
-        Node[] nodeArray = new Node[a.length];
+        ByteNode[] byteNodeArray = new ByteNode[a.length];
         for (int i = 0; i < a.length; i++) {
-            nodeArray[i] = new Node(a[i]);
+            byteNodeArray[i] = new ByteNode(a[i]);
         }
-        sort(nodeArray);
+        sort(byteNodeArray);
         for (int i = 0; i < a.length; i++) {
-            a[i] = nodeArray[i].getChineseChar();
+            a[i] = byteNodeArray[i].getChineseChar();
         }
     }
 
-    public void sort(Node[] a) {
+    public void sort(ByteNode[] a) {
         int R = 256;
         int N = a.length;
         int W = findLongestLength(a);
-        Node[] aux = new Node[N];
+        ByteNode[] aux = new ByteNode[N];
         for (int d = W - 1; d >= 0; d--) {
             int[] count = new int[R + 1];
             for (int i = 0; i < N; i++) {

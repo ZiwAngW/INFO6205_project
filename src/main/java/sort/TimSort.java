@@ -97,12 +97,7 @@ public class TimSort {
             }
         }
     }
-    /* function to print the array elements */
-    void printArr(String[] a, int n)
-    {
-        for (int i = 0; i < n; i++)
-            System.out.print(a[i] + " ");
-    }
+
 //    public static void main(String args[]) throws IOException {
 ////        Integer a[] = { 38, 10, 29, 25, 23, 6, 2, 30, 15 };
 ////        List<String> a = FileUtil.readFile("shuffledChinese.txt");

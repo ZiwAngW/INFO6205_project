@@ -1,10 +1,9 @@
 import Util.FileUtil;
-import Util.Node;
+import Util.ByteNode;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
 import org.junit.Test;
 import sort.LSDByteArray;
-import sort.LSDcollator;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -39,7 +38,7 @@ public class LSDbyteArrayTest {
     public void findByteAtTest(){
         Collator collator = Collator.getInstance(ULocale.CHINA);
         byte[] test1=collator.getCollationKey("哦").toByteArray();
-        Node tmp=new Node("哦");
+        ByteNode tmp=new ByteNode("哦");
         LSDByteArray x= new LSDByteArray();
         for(int i=0;i<test1.length;i++){
             assertEquals(x.findCharAtInString(i,tmp),test1[i]&0xFF);

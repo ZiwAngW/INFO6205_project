@@ -85,6 +85,13 @@ public class PinyinUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(PinyinUtil.getPinyinWithTone("牛啊"));
+        String[] x = {"阿鼎", "阿迪雅"};
+        for(String a:x){
+            System.out.print(a+"    ");
+        }
+        System.out.println();
+        for(String a:x){
+            System.out.print(PinyinUtil.getPinyin(a)+"   ");
+        }
     }
 }

@@ -37,13 +37,13 @@ public class MSDtestWithCollator {
             assertEquals(test[i],a[i]);
         }
     }
-    @Test
-    public void ByteAtTest(){
-        Collator collator = Collator.getInstance(ULocale.CHINA);
-        byte[] test1=collator.getCollationKey("啊").toByteArray();
-        MSDcollator x= new MSDcollator();
-        for(int i=0;i<test1.length;i++){
-            assertEquals(x.byteAt("啊",i),test1[i]&0xFF);
-        }
-    }
+//    @Test
+//    public void ByteAtTest(){
+//        Collator collator = Collator.getInstance(ULocale.CHINA);
+//        byte[] test1=collator.getCollationKey("啊").toByteArray();
+//        MSDcollator x= new MSDcollator();
+//        for(int i=0;i<test1.length;i++){
+//            assertEquals(x.byteAt("啊",i),test1[i]&0xFF);
+//        }
+//    }
 }
