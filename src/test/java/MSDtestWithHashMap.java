@@ -1,7 +1,7 @@
-import Util.ChineseComparator;
-import Util.FileUtil;
+import edu.neu.info6205.Util.ChineseComparator;
+import edu.neu.info6205.Util.FileUtil;
+import edu.neu.info6205.sort.MSDhash;
 import org.junit.Test;
-import sort.MSDhash;
 
 import java.io.IOException;
 import java.util.Arrays;

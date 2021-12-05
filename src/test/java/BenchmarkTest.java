@@ -2,8 +2,8 @@
  * Copyright (c) 2017. Phasmid Software
  */
 
-import Benchmark.*;
-
+import edu.neu.info6205.Benchmark.Benchmark;
+import edu.neu.info6205.Benchmark.Benchmark_Timer;
 import org.junit.Assert;
 import org.junit.Test;
 

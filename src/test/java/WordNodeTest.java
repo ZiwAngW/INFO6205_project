@@ -1,4 +1,4 @@
-import Util.WordNode;
+import edu.neu.info6205.Util.WordNode;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.junit.Test;
 

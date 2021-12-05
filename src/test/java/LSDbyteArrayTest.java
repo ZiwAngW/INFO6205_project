@@ -1,9 +1,9 @@
-import Util.FileUtil;
-import Util.ByteNode;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
+import edu.neu.info6205.Util.ByteNode;
+import edu.neu.info6205.Util.FileUtil;
+import edu.neu.info6205.sort.LSDByteArray;
 import org.junit.Test;
-import sort.LSDByteArray;
 
 import java.io.IOException;
 import java.util.Arrays;

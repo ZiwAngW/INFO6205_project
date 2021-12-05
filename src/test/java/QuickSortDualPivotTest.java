@@ -1,6 +1,6 @@
-import Util.FileUtil;
+import edu.neu.info6205.Util.FileUtil;
+import edu.neu.info6205.sort.DualPivotQuick;
 import org.junit.Test;
-import sort.DualPivotQuick;
 
 import java.io.IOException;
 import java.text.Collator;

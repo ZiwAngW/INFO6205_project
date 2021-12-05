@@ -1,19 +1,15 @@
-
-import Util.FileUtil;
-import org.junit.Test;
-import sort.MSDByteArray;
-
-
-import java.io.IOException;
-
-import java.util.Arrays;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.util.ULocale;
+import edu.neu.info6205.Util.FileUtil;
+import edu.neu.info6205.sort.MSDByteArray;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
 public class MSDtestByteArray {
-
 
     @Test
     public void GeneralTest() throws IOException {

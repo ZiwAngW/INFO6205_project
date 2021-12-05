@@ -1,4 +1,4 @@
-import Benchmark.Timer;
+import edu.neu.info6205.Benchmark.Timer;
 import org.junit.Before;
 import org.junit.Test;
 
