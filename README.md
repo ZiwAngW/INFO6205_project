@@ -2,11 +2,11 @@
 Group assinment for INFO6205 2021 Fall
 
 ## General info
-Report and benchmark [report.docx](https://github.com/ZiwAngW/INFO6205_project/blob/master/report.docx)
+Report and benchmark [report.pdf](https://github.com/ZiwAngW/INFO6205_project/blob/master/report.pdf)
 
 Data and charts that used to make the report [report.xlsx](https://github.com/ZiwAngW/INFO6205_project/blob/master/report.xlsx)
 
-Paper review [Review on MSD Radix Sort.docx](https://github.com/ZiwAngW/INFO6205_project/blob/master/Review%20on%20MSD%20Radix%20Sort.docx)
+Paper review [Review on MSD Radix Sort.pdf](https://github.com/ZiwAngW/INFO6205_project/blob/master/Review%20on%20MSD%20Radix%20Sort.pdf)
 
 [ShuffledChinese.txt](https://github.com/ZiwAngW/INFO6205_project/blob/master/shuffledChinese.txt) is download from canvas, with two extra names to in order to have 1M lines.
 
