@@ -25,7 +25,7 @@ public class TimSortPINYINTest {
 
     @Test //since tim sort is pinyin order
     public void test_fileSort() throws IOException {
-        String[] xs= FileUtil.readFileInRange("resource/shuffledChinese.txt",100);
+        String[] xs= FileUtil.readFileInRange("shuffledChinese.txt",100);
         for(int i=0;i<xs.length;i++){
             xs[i] = PinyinUtil.getPinyin(xs[i]);
         }

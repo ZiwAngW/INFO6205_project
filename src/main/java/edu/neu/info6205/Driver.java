@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * main driver class, run all the benchmarks, correctness check here
  */

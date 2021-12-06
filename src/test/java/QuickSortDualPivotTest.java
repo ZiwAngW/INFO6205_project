@@ -25,8 +25,8 @@ public class QuickSortDualPivotTest {
 	}
 	@Test
 	public void test_fileSort() throws IOException {
-		String[] xs=FileUtil.readFileInRange("resource/shuffledChinese.txt",5);
-		String[] xp=FileUtil.readFileInRange("resource/shuffledChinese.txt",5);
+		String[] xs=FileUtil.readFileInRange("shuffledChinese.txt",5);
+		String[] xp=FileUtil.readFileInRange("shuffledChinese.txt",5);
 
 		DualPivotQuick test=new DualPivotQuick();
 		test.sort(xs);
