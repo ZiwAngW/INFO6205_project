@@ -12,4 +12,9 @@ Paper review is in [Review on MSD Radix Sort.docx](https://github.com/ZiwAngW/IN
 
 There are many sorting algorithm we tried, but in terms of "the right order" for the Chinese input, please see [ChineseNameInOrder.txt](https://github.com/ZiwAngW/INFO6205_project/blob/master/ChineseNameInOrder.txt)
 with the algorithm that generates it [MSDByteArray](https://github.com/ZiwAngW/INFO6205_project/blob/master/src/main/java/edu/neu/info6205/sort/MSDByteArray.java)
-main method is in [Driver.class](https://github.com/ZiwAngW/INFO6205_project/blob/master/src/main/java/edu/neu/info6205/Driver.java)
+
+main method is in the [Driver](https://github.com/ZiwAngW/INFO6205_project/blob/master/src/main/java/edu/neu/info6205/Driver.java)
+
+```java
+System.out.println("Hello wordl");
+```
